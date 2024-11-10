@@ -1,0 +1,2 @@
+
+require('./assets/Script/HelloWorld');
