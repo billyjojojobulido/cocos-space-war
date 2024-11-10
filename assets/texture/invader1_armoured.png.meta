@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "0e8bc7c6-f4ab-401a-9b53-512d04f21048",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 16,
+  "height": 16,
+  "platformSettings": {},
+  "subMetas": {
+    "invader1_armoured": {
+      "ver": "1.0.6",
+      "uuid": "f3bc950a-7f0b-4a33-8495-5f2ac2ad3bdf",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "0e8bc7c6-f4ab-401a-9b53-512d04f21048",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 1,
+      "trimY": 2,
+      "width": 14,
+      "height": 12,
+      "rawWidth": 16,
+      "rawHeight": 16,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
