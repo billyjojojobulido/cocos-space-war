@@ -37,11 +37,25 @@ export default class Tank extends cc.Component {
             case cc.macro.KEY.space:
                 console.log("SHOOT");
                 break;
+            default:
+                break;
         }
     }
 
-    private _onKeyUp():void{
-
+    private _onKeyUp(event):void{
+        switch (event.keyCode){
+            case cc.macro.KEY.left:
+                console.log("STOP MOVE LEFT");
+                break;
+            case cc.macro.KEY.right:
+                console.log("STOP MOVE RIGHT");
+                break;
+            case cc.macro.KEY.space:
+                console.log("STOP SHOOT");
+                break;
+            default:
+                break;
+        }
     }
 
     private _canMoveLeft(): boolean{
