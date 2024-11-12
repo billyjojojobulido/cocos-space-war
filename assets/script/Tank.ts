@@ -16,15 +16,19 @@ export default class Tank extends cc.Component {
     //TODO
     private _canMoveLeft(): boolean{
         if (this.node.x <= -SCREEN_WIDTH){
+            this.node.x = -SCREEN_WIDTH;
             return false;
         }
-        this.node.x = -SCREEN_WIDTH;
         return true;
     }
 
     //TODO
     private _canMoveRight(): boolean{
-        return false;
+        if (this.node.x >= SCREEN_WIDTH){
+            this.node.x = SCREEN_WIDTH;
+            return false;
+        }
+        return true;
     }
 
     // TODO
