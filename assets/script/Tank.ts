@@ -12,6 +12,7 @@ export default class Tank extends cc.Component {
     private y_index = 0;
 
     private _xSpeed = 0;
+    private _isMoving = false;
 
     public onLoad(): void{
         this._setInputListener();
@@ -30,10 +31,12 @@ export default class Tank extends cc.Component {
     private _onKeyDown(event):void{
         switch (event.keyCode){
             case cc.macro.KEY.left:
-                console.log("MOVE LEFT");
+                this._isMoving = true;
+                this._xSpeed = -this.speed;
                 break;
             case cc.macro.KEY.right:
-                console.log("MOVE RIGHT");
+                this._isMoving = true;
+                this._xSpeed = this.speed;
                 break;
             case cc.macro.KEY.space:
                 console.log("SHOOT");
@@ -46,10 +49,12 @@ export default class Tank extends cc.Component {
     private _onKeyUp(event):void{
         switch (event.keyCode){
             case cc.macro.KEY.left:
-                console.log("STOP MOVE LEFT");
+                this._isMoving = false;
+                this._xSpeed = 0;
                 break;
             case cc.macro.KEY.right:
-                console.log("STOP MOVE RIGHT");
+                this._isMoving = false;
+                this._xSpeed = 0;
                 break;
             case cc.macro.KEY.space:
                 console.log("STOP SHOOT");
@@ -94,9 +99,10 @@ export default class Tank extends cc.Component {
     }
 
     public update(dt: number): void{
-        if (this._canMove){
+        if (this._isMoving && this._canMove()){
             this.node.x += this.speed * dt;
         }
+
     }
 
 
