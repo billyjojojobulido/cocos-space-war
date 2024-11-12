@@ -18,6 +18,8 @@ export default class Tank extends cc.Component {
         this._setInputListener();
         this.node.y = this.y_index;
     }
+
+    private _shoot: (x:number, y:number)=>void = undefined as never;
     
 	private _setInputListener(): void {
 		cc.systemEvent.on(
@@ -93,9 +95,8 @@ export default class Tank extends cc.Component {
         return true;
     }
 
-    // TODO
-    public shoot(): void {
-
+    public init(shoot :(x:number, y:number)=>void):void{
+        this._shoot = shoot;
     }
 
     public update(dt: number): void{
