@@ -15,6 +15,7 @@ export default class Tank extends cc.Component {
 
     public onLoad(): void{
         this._setInputListener();
+        this.node.y = this.y_index;
     }
     
 	private _setInputListener(): void {
@@ -74,9 +75,29 @@ export default class Tank extends cc.Component {
         return true;
     }
 
+    private _canMove(): boolean{
+        if (this._xSpeed < 0){
+            if (!this._canMoveLeft()){
+                return false;
+            }
+        } else if (this._xSpeed > 0){
+            if (!this._canMoveRight()){
+                return false;
+            }
+        }
+        return true;
+    }
+
     // TODO
     public shoot(): void {
 
     }
+
+    public update(dt: number): void{
+        if (this._canMove){
+            this.node.x += this.speed * dt;
+        }
+    }
+
 
 }
