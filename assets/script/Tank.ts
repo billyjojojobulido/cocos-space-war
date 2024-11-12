@@ -26,7 +26,18 @@ export default class Tank extends cc.Component {
 		cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this._onKeyUp, this);
 	}
 
-    private _onKeyDown():void{
+    private _onKeyDown(event):void{
+        switch (event.keyCode){
+            case cc.macro.KEY.left:
+                console.log("MOVE LEFT");
+                break;
+            case cc.macro.KEY.right:
+                console.log("MOVE RIGHT");
+                break;
+            case cc.macro.KEY.space:
+                console.log("SHOOT");
+                break;
+        }
     }
 
     private _onKeyUp():void{
