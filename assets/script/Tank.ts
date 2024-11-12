@@ -1,5 +1,7 @@
 const {ccclass, property} = cc._decorator;
 
+const SCREEN_WIDTH = 480;
+
 @ccclass
 export default class Tank extends cc.Component {
 
@@ -13,7 +15,11 @@ export default class Tank extends cc.Component {
     
     //TODO
     private _canMoveLeft(): boolean{
-        return false;
+        if (this.node.x <= -SCREEN_WIDTH){
+            return false;
+        }
+        this.node.x = -SCREEN_WIDTH;
+        return true;
     }
 
     //TODO
