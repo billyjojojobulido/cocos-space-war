@@ -12,9 +12,11 @@ export default class Tank extends cc.Component {
     private y_index = 0;
 
     private _xSpeed = 0;
+    private _isMoving = false;
 
     public onLoad(): void{
         this._setInputListener();
+        this.node.y = this.y_index;
     }
     
 	private _setInputListener(): void {
@@ -29,10 +31,12 @@ export default class Tank extends cc.Component {
     private _onKeyDown(event):void{
         switch (event.keyCode){
             case cc.macro.KEY.left:
-                console.log("MOVE LEFT");
+                this._isMoving = true;
+                this._xSpeed = -this.speed;
                 break;
             case cc.macro.KEY.right:
-                console.log("MOVE RIGHT");
+                this._isMoving = true;
+                this._xSpeed = this.speed;
                 break;
             case cc.macro.KEY.space:
                 console.log("SHOOT");
@@ -45,10 +49,12 @@ export default class Tank extends cc.Component {
     private _onKeyUp(event):void{
         switch (event.keyCode){
             case cc.macro.KEY.left:
-                console.log("STOP MOVE LEFT");
+                this._isMoving = false;
+                this._xSpeed = 0;
                 break;
             case cc.macro.KEY.right:
-                console.log("STOP MOVE RIGHT");
+                this._isMoving = false;
+                this._xSpeed = 0;
                 break;
             case cc.macro.KEY.space:
                 console.log("STOP SHOOT");
@@ -74,9 +80,30 @@ export default class Tank extends cc.Component {
         return true;
     }
 
+    private _canMove(): boolean{
+        if (this._xSpeed < 0){
+            if (!this._canMoveLeft()){
+                return false;
+            }
+        } else if (this._xSpeed > 0){
+            if (!this._canMoveRight()){
+                return false;
+            }
+        }
+        return true;
+    }
+
     // TODO
     public shoot(): void {
 
     }
+
+    public update(dt: number): void{
+        if (this._isMoving && this._canMove()){
+            this.node.x += this._xSpeed * dt;
+        }
+
+    }
+
 
 }
