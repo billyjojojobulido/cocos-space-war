@@ -100,7 +100,7 @@ export default class Tank extends cc.Component {
 
     public update(dt: number): void{
         if (this._isMoving && this._canMove()){
-            this.node.x += this.speed * dt;
+            this.node.x += this._xSpeed * dt;
         }
 
     }
