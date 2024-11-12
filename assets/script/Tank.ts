@@ -12,15 +12,26 @@ export default class Tank extends cc.Component {
     private y_index = 0;
 
     private _xSpeed = 0;
+
+    public onLoad(): void{
+        this._setInputListener();
+    }
     
 	private _setInputListener(): void {
 		cc.systemEvent.on(
 			cc.SystemEvent.EventType.KEY_DOWN,
-			null,
+			this._onKeyDown,
 			this
 		);
-		cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, null, this);
+		cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this._onKeyUp, this);
 	}
+
+    private _onKeyDown():void{
+    }
+
+    private _onKeyUp():void{
+
+    }
 
     private _canMoveLeft(): boolean{
         if (this.node.x <= -SCREEN_WIDTH){
@@ -43,8 +54,4 @@ export default class Tank extends cc.Component {
 
     }
 
-    // TODO
-    public onLoad(): void {
-        
-    }
 }
